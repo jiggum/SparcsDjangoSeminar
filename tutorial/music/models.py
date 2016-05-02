@@ -19,6 +19,3 @@ class Song(models.Model):
     album = models.ManyToManyField('Album',related_name='song')
 
 
-class Comment(models.Model):
-    name = models.CharField(max_length=100)
-    comment = models.CharField(max_length=65536)

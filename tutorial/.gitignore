@@ -1,2 +1,13 @@
 # SQLITE3 Test database
 db.*
+__pycache__/
+*.py[cod]
+
+*.so
+
+cronlog
+*.swp
+migrations/
+*.log
+*.pyc
+.Python
