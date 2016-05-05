@@ -3,6 +3,13 @@ from review.models import Comment
 from django.http import HttpResponseRedirect
 # Create your views here.
 
+def main(request):
+    comments = Comment.objects.all()
+    ctx = {
+        'comments' : comments,
+    }
+    return render(request,'main.html',ctx)
+
 def insert(request):
     return render(request,'insert.html')
 

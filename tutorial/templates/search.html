@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-xs-12 panel">
+        <form role="form">
+           <div id="custom-search-input">
+                <div class="input-group">
+                    <input id="keyword" name="q" type="text" class="form-control input-lg" placeholder="Search {{type|capfirst}}">
+                    <span class="input-group-btn">
+                        <input class="btn btn-info btn-lg" type="submit" value="검색" formaction="/music/result">
+                    </span>
+                </div>
+            </div> 
+            <input id ="type" name="type" type="hidden" value="{{type}}">
+        </form>
+    </div>
+</div>
+{% endblock %}

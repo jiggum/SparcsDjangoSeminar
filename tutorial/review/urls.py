@@ -13,13 +13,11 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
 
+from django.conf.urls import url
 
 urlpatterns = [
-    url(r'^$', lambda x: HttpResponseRedirect('/review/insert')),
+    url(r'^$', 'review.views.main'),
     url(r'^insert/', 'review.views.insert'),
     url(r'^add', 'review.views.add'),
 ]

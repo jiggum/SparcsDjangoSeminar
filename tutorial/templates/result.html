@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-xs-12 panel">
+       <div class="container padding">
+       <div class="panel panel-info">
+           <div class="panel-heading"> <h4>Search Keyword : {{keyword}}</h4></div>
+             <ul class="list-group">
+             </ul>
+             {% for result in results %}
+             <li class="list-group-item"> <a href="/music/{{type}}/{{result.id}}">{{result}}</a></li>
+             {% endfor %}
+       </div>
+    </div> 
+</div>
+{% endblock %}

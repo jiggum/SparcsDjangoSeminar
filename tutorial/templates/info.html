@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 well">
+
+
+    <div class="col-xs-3" align="center">
+        {% if type == "song" %}
+            {% for album in result.album.all %}
+                <img src="{{album.image}}" class="img-responsive">
+            {% endfor %}
+        {% else %}
+                <img src="{{result.image}}" class="img-responsive">
+                {% endif %}
+    </div>
+    <div class="col-xs-9">
+            {% if type == "singer" %}
+            <div class="table-responsive">
+                <table >
+                    <tr>
+                        <h4>{{result.name}}</h4>
+                    </tr>
+                    <tr>
+                        <td width="100px">
+                            데뷔년도
+                        </td>
+                        <td>
+                            {{result.debut_year}}
+                        </td>
+                    </tr>
+                    {% for album in result.album.all %}
+                        <tr>
+                            <td>
+                                {% if forloop.first %}
+                                출시앨범 
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="/music/album/{{album.id}}"> {{album.name}} </a>
+                    </td>
+                        </tr>
+                    {% endfor %}
+
+
+                </table>
+            </div>
+           {% elif  type == "album" %}
+                <table >
+                    <tr>
+                        <h4>{{result.name}}</h4>
+                    </tr>
+                    <tr>
+                        <td width="100px">
+                            출시일
+                        </td>
+                        <td>
+                            {{result.release_date}}
+                        </td>
+                    </tr>
+  <tr>
+                        <td width="100px">
+                            장르
+                        </td>
+                        <td>
+                            {{result.genre}}
+                        </td>
+                    </tr>
+
+                    {% for song in result.song.all %}
+                        <tr>
+                            <td>
+                                {% if forloop.first %}
+                                수록곡
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{forloop.counter}}. <a href="/music/song/{{song.id}}">{{song.name}}</a>
+                    </td>
+                        </tr>
+                    {% endfor %}
+
+
+                </table>
+                {% else %}
+                <table >
+                    <tr>
+                        <h4>{{result.name}}</h4>
+                    </tr>
+
+                            {% for album in result.album.all %}
+                    <tr>
+                        <td width="100px">
+                            아티스트
+                        </td>
+                        <td>
+                            {% for singer in album.singer.all %}
+                                <a href="/music/singer/{{singer.id}}"> {{singer.name}}&nbsp;</a>
+                            {% endfor %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="100px">
+                            출시일
+                        </td>
+                        <td>
+                            {{ album.release_date}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100px">
+                            수록앨범
+                        </td>
+                        <td>
+                                <a href="/music/album/{{album.id}}"> {{album.name}}&nbsp;</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100px">
+                            장르
+                        </td>
+                        <td>
+                            {{ album.genre}}
+                        </td>
+                    </tr>
+
+                            {% endfor %}
+                </table>
+
+            {% endif %} 
+        </div>
+       </div>
+    </div> 
+</div>
+{% endblock %}
