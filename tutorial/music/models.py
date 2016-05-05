@@ -14,8 +14,6 @@ class Album(models.Model):
 
 class Song(models.Model):
     name = models.CharField(max_length=100)
-    tracknumber = models.IntegerField(default = 0)
-    lyrics = models.CharField(max_length=65536)
     album = models.ManyToManyField('Album',related_name='song')
 
 
