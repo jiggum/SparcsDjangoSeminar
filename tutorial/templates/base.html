@@ -26,6 +26,13 @@
             </li>
             <li><a href="/review/insert">Comment</a></li>
           </ul>
+          <ul class="nav navbar-right">
+            {% if user.is_authenticated %}
+                <li><a href="/session/logout/" class="navbar-form btn btn-primary">{{ user }} Logout</a></li>
+            {% else %}
+                <li><a href="/session/login/" class="navbar-form btn btn-primary">Login</a></li>
+                {% endif %}
+          </ul>
         </div>
       </div>
     </nav>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from review.models import Comment
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def main(request):
@@ -10,6 +11,7 @@ def main(request):
     }
     return render(request,'main.html',ctx)
 
+@login_required(login_url="/session/login")
 def insert(request):
     return render(request,'insert.html')
 
